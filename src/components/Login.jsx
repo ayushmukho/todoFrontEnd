@@ -1,5 +1,4 @@
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
@@ -21,22 +20,27 @@ import { useAuth } from "../providers/authProvider";
 import { useLoginUser } from "../api/auth/authHook";
 import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
+import { emailValidator } from "../utils";
 
 const defaultTheme = createTheme();
+
 export default function SignIn({ setAuthState }) {
+  //hooks
+  const navigate = useNavigate();
   const { setToken } = useAuth();
   const { mutate, isLoading, isSuccess, error, logInUser } = useLoginUser();
+
+  //useState
   const [email, setEmail] = useState("");
   const [emailValidatorText, setEmailValidatorText] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [emailStatus, setEmailStatus] = useState(false);
+
+  //handlers
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const navigate = useNavigate();
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     mutate({
@@ -44,21 +48,13 @@ export default function SignIn({ setAuthState }) {
       password: password,
     });
   };
-  const emailValidator = (email) => {
-    if (email === "") return true;
-    const emailRegex =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    return emailRegex.test(email.toString());
-  };
 
+  //useEffect
   useEffect(() => {
     if (!emailValidator(email)) {
       setEmailValidatorText(
         "Please enter a valid email id ( ex: Dory@gmail.com)"
       );
-      setEmailStatus(false);
-    } else if (email === "") {
-      setEmailStatus(false);
     } else {
       setEmailValidatorText("");
     }

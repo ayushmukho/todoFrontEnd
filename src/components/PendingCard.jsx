@@ -1,6 +1,5 @@
 import { LoadingButton } from "@mui/lab";
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -11,12 +10,17 @@ import React from "react";
 import { useMoveToComplete } from "../api/task/taskHook";
 
 const PendingCard = ({ pendingTask, idx }) => {
+  //hooks
   const { movetoCompleteMutate, isCompleteMutateLoading } = useMoveToComplete();
+
+  //handlers
   const handleComplete = (id) => {
     movetoCompleteMutate({
       taskId: id,
     });
   };
+
+  //jsx
   return (
     <div style={{ marginTop: "20px" }} key={idx}>
       <Card sx={{ minWidth: 275 }}>

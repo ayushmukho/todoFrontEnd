@@ -17,11 +17,16 @@ import {
 import { LoadingButton } from "@mui/lab";
 
 const TodoCard = ({ todoTask, idx }) => {
-  const [open, setOpen] = useState(false);
+  //hooks
   const { mutate, isLoading, isSuccess, error } = useDeleteTodoTask();
   const { movetoPendingMutate, isPendingMutateLoading } = useMoveToPending();
   const { movetoCompleteMutate, isCompleteMutateLoading } = useMoveToComplete();
+
+  //useState
+  const [open, setOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+
+  //handlers
   const handleOpen = (todoTask) => {
     setSelectedTask(todoTask);
   };
@@ -44,9 +49,13 @@ const TodoCard = ({ todoTask, idx }) => {
       taskId: id,
     });
   };
+
+  //useEffects
   useEffect(() => {
     if (selectedTask !== null) setOpen(true);
   }, [selectedTask]);
+
+  //jsx
   return (
     <div style={{ marginTop: "20px" }} key={idx}>
       <Card sx={{ minWidth: 275 }}>

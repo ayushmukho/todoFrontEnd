@@ -6,7 +6,22 @@ import moment from "moment";
 import { useAddTodoTask } from "../api/task/taskHook";
 
 const AddTask = ({ handleClose, selectedTask }) => {
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  //hooks
   const { mutate, isLoading, isSuccess, error } = useAddTodoTask();
+
+  //useState
   const [date, setDate] = useState(
     selectedTask?.dueDate
       ? moment(selectedTask?.dueDate).format("MM-DD-YYYY")
@@ -21,17 +36,8 @@ const AddTask = ({ handleClose, selectedTask }) => {
   const [description, setDescription] = useState(
     selectedTask?.description ? selectedTask?.description : ""
   );
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+  
+  //handlers
   const handleSubmitTask = () => {
     mutate({
       priority: +priority,
@@ -42,6 +48,8 @@ const AddTask = ({ handleClose, selectedTask }) => {
     });
     handleClose();
   };
+
+  //jsx
   return (
     <Box sx={style}>
       <Typography id="modal-modal-title" variant="h6" component="h2">
