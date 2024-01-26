@@ -3,7 +3,7 @@ import API from "./authAPI";
 
 export const useRegisterUser = () => {
   //const queryClient = useQueryClient();
-  const { mutate, data: registeruserData, isLoading, isSuccess, error } = useMutation({
+  const { mutate, data: registeruserData, isPending: isLoading, isSuccess, error } = useMutation({
     mutationFn: async (values) => {
 			console.log("values", values)
       const api = new API();
@@ -18,7 +18,7 @@ export const useRegisterUser = () => {
 };
 export const useLoginUser = () => {
   //const queryClient = useQueryClient();
-  const { mutate, data: logInUser, isLoading, isSuccess, error } = useMutation({
+  const { mutate, data: logInUser, isPending: isLoading, isSuccess, error } = useMutation({
     mutationFn: async (values) => {
       const api = new API();
       const res = await api.login(values);

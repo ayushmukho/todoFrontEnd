@@ -75,6 +75,8 @@ export default function SignUp({ setAuthState }) {
     console.log("error", error);
   }, [isSuccess, error]);
 
+  console.log("isLoading", isLoading)
+
   //jsx
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -167,13 +169,13 @@ export default function SignUp({ setAuthState }) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              loading={isLoading}
               disabled={
                 emailValidatorText ||
                 name === "" ||
                 password === "" ||
                 password.length <= 6
               }
-              loading={isLoading}
             >
               Sign Up
             </LoadingButton>

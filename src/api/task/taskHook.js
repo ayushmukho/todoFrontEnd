@@ -39,7 +39,7 @@ export const usseGetAlltasks = () => {
 };
 export const useAddTodoTask = () => {
   const queryClient = useQueryClient();
-  const { mutate, isLoading, isSuccess, error } = useMutation({
+  const { mutate, isPending: isLoading, isSuccess, error } = useMutation({
     mutationFn: async (values) => {
       console.log("values", values);
       const api = new API();
@@ -54,7 +54,7 @@ export const useAddTodoTask = () => {
 };
 export const useDeleteTodoTask = () => {
   const queryClient = useQueryClient();
-  const { mutate, isLoading, isSuccess, error } = useMutation({
+  const { mutate, isPending: isLoading, isSuccess, error } = useMutation({
     mutationFn: async (values) => {
       console.log("values", values);
       const api = new API();
@@ -69,7 +69,7 @@ export const useDeleteTodoTask = () => {
 };
 export const useMoveToPending = () => {
   const queryClient = useQueryClient();
-  const { mutate: movetoPendingMutate, isLoading: isPendingMutateLoading } =
+  const { mutate: movetoPendingMutate, isPending: isPendingMutateLoading } =
     useMutation({
       mutationFn: async (values) => {
         console.log("values", values);
@@ -86,7 +86,7 @@ export const useMoveToPending = () => {
 };
 export const useMoveToComplete = () => {
   const queryClient = useQueryClient();
-  const { mutate: movetoCompleteMutate, isLoading: isCompleteMutateLoading } =
+  const { mutate: movetoCompleteMutate, isPending: isCompleteMutateLoading } =
     useMutation({
       mutationFn: async (values) => {
         console.log("values", values);

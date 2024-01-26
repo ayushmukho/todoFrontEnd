@@ -59,7 +59,6 @@ export default function SignIn({ setAuthState }) {
       setEmailValidatorText("");
     }
   }, [email]);
-
   useEffect(() => {
     if (isSuccess) {
       setToken(logInUser.token);
@@ -68,6 +67,8 @@ export default function SignIn({ setAuthState }) {
     }
     console.log("error", error);
   }, [isSuccess, error]);
+
+  console.log("isLoading", isLoading)
 
   return (
     <ThemeProvider theme={defaultTheme}>
