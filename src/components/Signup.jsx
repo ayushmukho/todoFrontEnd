@@ -167,7 +167,12 @@ export default function SignUp({ setAuthState }) {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              disabled={emailValidatorText || name === "" || password === ""}
+              disabled={
+                emailValidatorText ||
+                name === "" ||
+                password === "" ||
+                password.length <= 6
+              }
               loading={isLoading}
             >
               Sign Up
