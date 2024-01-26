@@ -1,6 +1,6 @@
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LoadingButton } from "@mui/lab";
 import moment from "moment";
 import { useAddTodoTask } from "../api/task/taskHook";
@@ -36,7 +36,7 @@ const AddTask = ({ handleClose, selectedTask }) => {
   const [description, setDescription] = useState(
     selectedTask?.description ? selectedTask?.description : ""
   );
-  
+
   //handlers
   const handleSubmitTask = () => {
     mutate({
@@ -46,8 +46,12 @@ const AddTask = ({ handleClose, selectedTask }) => {
       taskId: selectedTask?._id ? selectedTask?._id : "",
       dueDate: moment(date).format("YYYY-MM-DD"),
     });
-    handleClose();
   };
+
+  //useEffect
+  useEffect(() => {
+    if(isSuccess)handleClose();
+  }, [isSuccess]);
 
   //jsx
   return (
