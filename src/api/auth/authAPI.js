@@ -2,7 +2,7 @@ import axios from "axios";
 export default class API {
   constructor() {
     this.instance = axios.create({
-      baseURL: "http://localhost:5678/v2"//`https://jellyfish-app-vzwiq.ondigitalocean.app/v2`,
+      baseURL: "https://jellyfish-app-vzwiq.ondigitalocean.app/v2",
       //   headers: {
       //     Authorization: JSON.parse(localStorage.getItem('userAuth'))
       //       ?.authorization
