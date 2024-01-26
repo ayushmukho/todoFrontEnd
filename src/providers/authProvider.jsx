@@ -14,10 +14,8 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (token) {
-      axios.defaults.headers.common["jwtToken"] = token;
       localStorage.setItem("token", token);
     } else {
-      delete axios.defaults.headers.common["jwtToken"];
       localStorage.removeItem("token");
     }
   }, [token]);
