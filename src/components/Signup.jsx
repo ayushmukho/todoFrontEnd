@@ -10,6 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 import {
   FormControl,
+  FormHelperText,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -138,6 +139,7 @@ export default function SignUp({ setAuthState }) {
                     type={showPassword ? "text" : "password"}
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
+                    error={password.length <= 6 && password !== ""}
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
@@ -152,6 +154,11 @@ export default function SignUp({ setAuthState }) {
                     }
                     label="Password"
                   />
+                  {password.length <= 6 && password !== "" && (
+                    <FormHelperText error id="accountId-error">
+                      Password Must be greater than 6 digit
+                    </FormHelperText>
+                  )}
                 </FormControl>
               </Grid>
             </Grid>
