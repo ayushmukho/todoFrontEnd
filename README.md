@@ -1,6 +1,6 @@
 # Front-end for Task Manger (React + Vite)
 
-Here is the entire app integrated with the frontend as well as with the backend [UI](https://todofrontend-asg.netlify.app/login).
+Here is the entire app integrated with the frontend as well as with the backend [UI](https://todofrontend-asg.netlify.app).
 
 Currently, two official plugins are available:
 
