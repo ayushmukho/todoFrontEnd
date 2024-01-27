@@ -10,7 +10,7 @@ const Routes = () => {
   // Define routes accessible only to authenticated users
   const routesForAuthenticatedOnly = [
     {
-      path: "/",
+      path: "/*",
       element: <ProtectedRoute />, // Wrap the component in ProtectedRoute
       children: [
         {
@@ -28,6 +28,7 @@ const Routes = () => {
       element: <Auth />,
     },
   ];
+  
 
   // Combine and conditionally include routes based on authentication status
   const router = createBrowserRouter([
